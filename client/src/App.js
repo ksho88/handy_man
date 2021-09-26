@@ -1,11 +1,19 @@
-import {useState, useEffect }from 'react';
-import axios from "axios"
+;import { Route,Switch } from 'react-router-dom';
+import Home from './  /shared/Home';
+import About from './components/shared/about';
+import Handy_Man from './components/shared/Handy_Man';
+import noMatch from './components/shared/NoMatch';
+import MainNavbar from './components/shared/MainNavbar';
 
-const { workers, useEffect} = useState([]) 
-useEffect(() => {
-axios.get("/api/workers;")
-})
-.catch(err => console.log(err) ) 
-}, [])
-
+const App = () => {
+  <>
+  <MainNavbar />
+<switch>
+  <Route exact path="/" components={Home}/>
+  <Route exact path="/about" components={About} />
+  <Rout exact pathc="/workers" components={Handy_Man}/>
+  <Rout components={Nomatch} />
+</switch>
+  </>
+}
 export default App;

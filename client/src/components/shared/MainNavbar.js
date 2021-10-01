@@ -1,31 +1,33 @@
-import Workers from '../handy_man/Handy_Man';
+import { Navbar, NavItem, Icon } from 'react-materialize';
 
-const MainNavbar = () =>  {
-  return(
-  <>
-  <Navbar
-  alignLinks="right"
-  brand={<a classname="brand-log" href="/">Workers List</a>}
-  id="mobile-nav"
-  menuIcons={<Icon>menu</Icon>}
-  options={{
-    draggable: true, 
-    inDuration: 250,
-    onCloseEnd: null,
-    onClosesTART: null,
-    onOpenEnd: null,
-    outDuration: 200, 
-    preventScrolling: true
-  }}
-  >
-    <NavItem href="/about">
-    About
-    </NavItem>
-      <NavItem href="workers">
-        Workers
-      </NavItem>
-  </Navbar>
-  </>
+const MainNavbar = () => {
+  return (
+    <>
+      <Navbar 
+        alignLinks="right"
+        brand={<a className="brand-logo" href="/">Worker List</a>}
+        id="mobile-nav"
+        menuIcon={<Icon>menu</Icon>}
+        options={{
+          draggable: true,
+          edge: 'left',
+          inDuration: 250,
+          onCloseEnd: null,
+          onCloseStart: null,
+          onOpenEnd: null,
+          onOpenStart: null,
+          outDuration: 200,
+          preventScrolling: true
+        }}
+      >
+        <NavItem href="/about">
+          About
+        </NavItem>
+        <NavItem href="/workers">
+          workers
+        </NavItem>
+      </Navbar>
+    </>
   )
 }
 

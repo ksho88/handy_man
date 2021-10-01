@@ -1,7 +1,7 @@
 class Api::CommentsController < ApplicationController
 
 def index
-  render json: Comments.all
+  render json: services.comments
 end
 
 def show @comment.find(params[:id])
@@ -9,7 +9,7 @@ def show @comment.find(params[:id])
 end
 
 def create 
-  @comments = Comment.new(comment_params)
+  @comments = service.comments(comment_params)
   if @comment.save
     render json: @comment
   else
@@ -19,7 +19,7 @@ def create
 end
 
 def update
-  @comment = Comment.fin(params[:id]) 
+  @comment = service.comments(params[:id]) 
   if @comment.updat(comment_params)
     render json: @comment
   else
@@ -28,14 +28,15 @@ def update
 end
 
 def destroy 
-  Comment.find(params[:id]).destroy
+  service.comments(params[:id]).destroy
   @comment.destroy
   render json: {message: 'comment deleted' }
   or 
-  Conmment.find(params[:id]).destroy
+  service.comments(params[:id]).destroy
   render json: { message: 'comment deleted' }
 end
 
 private def comment params
+  before _action :set_service
   params.require(:comment).permit()
 end

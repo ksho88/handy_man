@@ -11,7 +11,7 @@ class Api::WorkersController < ApplicationController
   end
   
   def create 
-    @Wworker = Woker.new(woker_params)
+    @worker = Woker.new(woker_params)
   if @worker.save
       render json: @worker
   else

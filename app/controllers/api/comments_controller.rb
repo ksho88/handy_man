@@ -1,42 +1,33 @@
 class Api::CommentsController < ApplicationController
-
-def index
-  render json: services.comments
-end
-
-def show @comment.find(params[:id])
-  render json: @comment
-end
-
-def create 
-  @comments = service.comments(comment_params)
-  if @comment.save
-    render json: @comment
-  else
-    render json:{ errors: @comment.errors },
-    statsu: :unprcessable_entity
+  def index
+    render json: @service.comments
   end
-end
-
-def update
-  @comment = service.comments(params[:id]) 
-  if @comment.updat(comment_params)
-    render json: @comment
-  else
-    rener json: :unprcessable_entity
+  def show
+    @comment = @service.comments.find(params[:id])
+    render json: @service
   end
-end
-
-def destroy 
-  service.comments(params[:id]).destroy
-  @comment.destroy
-  render json: {message: 'comment deleted' }
-  or 
-  service.comments(params[:id]).destroy
-  render json: { message: 'comment deleted' }
-end
-
-private def comment params
-  before _action :set_service
-  params.require(:comment).permit()
+  def create
+    @comment = @service.comments.new(comment_params)
+    if @comment.save
+      render json: @comment
+    else
+      render json: { errors: @comment.errors }, status: :unprocessable_entity
+    end
+  end
+  def update
+    @comment = @service.comments.find(params[:id])
+    if @comment.update(comment_params)
+      render json: @comment
+    else
+      render json: { errors: @comment.errors }, status: :unprocessable_entity
+    end
+  end
+  def destroy
+    @service.comments.find(params[:id]).destroy
+    render json: { message: ‘Comment Deleted’}
+  end
+  private
+    def comment_params
+    params.require(:comment).permit(:title, :body, :author)
+  end
 end

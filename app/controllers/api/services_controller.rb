@@ -1,46 +1,37 @@
 class Api::ServicesController < ApplicationController
-
-  def index 
-    render json: Woker.services
-    
-    def show 
-      @service = worker.find(params[:id})
-        render json: @service
-      end 
-
-        def create
-          @service = name.new( services )
-          if @service.save
-            render json: @service
-          else
-            renderjson: { errors: @service.errors },
-            status; :unproccessable_enity
-          end
-        end
-
-        def update
-          @service = worker.services(paras[:id])
-          if @service.update(services_params)
-            render json: @service
-          else
-            render json: {errors: @service.errors }, 
-            status: :unproccessable_enity
-          end
-        end
-
-        def destroy
-          worker.sevices(paramsp:[id]).destroy
-          @service.destroy
-          render json: { message: 'service deleted')
-            or 
-            worker.services(params[:id]).destroy
-            render json: { message: 'service deleted' }
-          end
-
-          private def service
-            before_action :set_worker
-@worker.find(params[:worker_id])
-            params.require(:service).permit()
-            b
-          end
-
+  before_action :set_worker
+  def index
+    render json: @worker.services
+  end
+  def show
+    @service = @worker.services.find(params[:id])
+    render json: @service
+  end
+  def create
+    @service = @worker.services.new(service_params)
+    if @service.save
+      render json: @service
+    else
+      render json: { errors: @service.errors }, status: :unprocessable_entity
+    end
+  end
+  def update
+    @service = @worker.services.find(params[:id])
+    if @service.update(service_params)
+      render json: @service
+    else
+      render json: { errors: @service.errors }, status: :unprocessable_entity
+    end
+  end
+  def destroy
+    @worker.services.find(params[:id]).destroy
+    render json: { message: ‘Service Deleted’}
+  end
+  private
+    def service_params
+    params.require(:service).permit(:job_title, :desc, :category)
+  end
+  def set_worker
+    @worker = Worker.find(params[:worker_id])
+  end
+end

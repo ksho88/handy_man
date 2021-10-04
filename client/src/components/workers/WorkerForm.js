@@ -21,10 +21,11 @@ const WorkerForm = ({ addWorker, id, complete,  updateWorker, setEdit }) => {
     setWorker({ title: "", complete: false })
   }
 
-  return (
+   return (
     <>
       <form onSubmit={handleSubmit}>
         <input
+         type="text"
           name="title"
           value={worker.title}
           onChange={(e) => setWorker({...worker, title: e.target.value })}
@@ -41,7 +42,7 @@ const WorkerForm = ({ addWorker, id, complete,  updateWorker, setEdit }) => {
         />
         <button type="submit">Submit</button>
       </form>
-
+      
     </>
   )
 }

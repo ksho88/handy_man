@@ -4,6 +4,8 @@ import About from './components/shared/About';
 import Worker from './components/workers/Worker';
 import NoMatch from './components/shared/NoMatch';
 import MainNavbar from './components/shared/MainNavbar';
+import 'materialize-css/dist/css/materialize.min.css';
+
 
 const App = () => {
   return(

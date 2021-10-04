@@ -1,3 +1,4 @@
+import 'materialize-css';
 import { Navbar, NavItem, Icon } from 'react-materialize';
 
 const MainNavbar = () => {
@@ -5,9 +6,9 @@ const MainNavbar = () => {
     <>
       <Navbar 
         alignLinks="right"
-        brand={<a className="brand-logo" href="/">Worker List</a>}
+        brand={<a className="brand-logo" href="/">HandyMand</a>}
         id="mobile-nav"
-        menuIcon={<Icon>menu</Icon>}
+        menuIcon={<Icon>Menu</Icon>}
         options={{
           draggable: true,
           edge: 'left',
@@ -17,18 +18,30 @@ const MainNavbar = () => {
           onOpenEnd: null,
           onOpenStart: null,
           outDuration: 200,
-          preventScrolling: true
+
         }}
       >
-        <NavItem href="/about">
-          About
+        <NavItem href="./Home">
+         Home
         </NavItem>
-        <NavItem href="/workers">
+        <NavItem href="./workers">
           workers
         </NavItem>
+        <NavItem href="./About">
+          About
+        </NavItem>
+        <NavItem href="./Nomatch">
+        </NavItem>
+  
+              
+        
       </Navbar>
+      
     </>
   )
 }
 
 export default MainNavbar;
+
+
+  

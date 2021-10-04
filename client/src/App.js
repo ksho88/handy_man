@@ -13,6 +13,9 @@ const App = () => {
   <Route exact path="/" components={Home}/>
   <Route exact path="/about" components={About} />
   <Route exact path="/workers" components={Worker}/>
+  {/* <Route exact path="/workers/:id/services" component={Services} /> */}
+
+
   <Route exact path="/NoMatch"components={NoMatch} />
 </Switch>
   </>

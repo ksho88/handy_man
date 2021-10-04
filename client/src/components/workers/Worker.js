@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import WorkerList from './WorkerList';
+import { useState, } from "react";
+import React from "react";
 import WorkerForm from './WorkerForm';
+// import comments from
 
 const Worker = ({id, title, complete, deleteWorker, updateWorker }) => {
   const [editing, setEdit] = useState(false)

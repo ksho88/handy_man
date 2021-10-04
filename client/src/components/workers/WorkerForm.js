@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
-const WorkerForm = ({ addWorker, id, title, complete, updateWorker, setEdit }) => {
+const WorkerForm = ({ addWorker, id, complete,  updateWorker, setEdit }) => {
   const [worker, setWorker] = useState({ title: "", complete: false })
 
   useEffect( () => {
     if (id) {
-      setWorker({ title, complete })
+      setWorker({ id, complete })
       // setWorker({ title: title, complete: complete })
     }
-  }, [])
+  },[id, complete])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -24,7 +24,7 @@ const WorkerForm = ({ addWorker, id, title, complete, updateWorker, setEdit }) =
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input 
+        <input
           name="title"
           value={worker.title}
           onChange={(e) => setWorker({...worker, title: e.target.value })}
@@ -33,8 +33,8 @@ const WorkerForm = ({ addWorker, id, title, complete, updateWorker, setEdit }) =
           placeholder="Title"
         />
         <input
-          type="checkbox"
-          name="complete"
+          type="text"
+          name="worker"
           value={worker.complete}
           onChange={(e) => setWorker({...worker, complete: e.target.value})}
           checked={worker.complete}
@@ -45,5 +45,6 @@ const WorkerForm = ({ addWorker, id, title, complete, updateWorker, setEdit }) =
     </>
   )
 }
+
 
 export default WorkerForm;

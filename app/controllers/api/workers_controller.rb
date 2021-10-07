@@ -45,4 +45,4 @@ class Api::WorkersController < ApplicationController
     def worker_params
       params.require(:worker).permit(:first_name, :last_name, :specialty, :phone, :email)
     end
-ends
+    

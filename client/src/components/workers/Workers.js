@@ -4,17 +4,19 @@ import WorkerList from './WorkerList';
 import WorkerForm from './WorkerForm';
 
 const Workers = () => {
+  const[workers, setWorkers] = useState([])
 
   useEffect( () => {
     axios.get('/api/workers')
     .then( res => {
-      setWorker(res.data)
+      setWorkers(res.data)
+     console.log(res.data)
     })
     .catch( err => console.log(err))
   }, [])
 
-  const addWorker =(worker) => {
-  axios.post('/api/workers', {worker})
+  const addWorker = (worker) => {
+    axios.post('/api/workers', {worker})
   .then( res => {
     setWorkers([...Workers, res.data])
   })
@@ -22,10 +24,10 @@ const Workers = () => {
 }
 
 const updateWorker = (id, worker) => {
-  axios.put('/api/workers/${id}',{ worker })
-  .then(res => {
+  axios.put(`/api/workers/${id}`, { worker })
+  .then( res => {
     const updatedWorkers = workers.map( m => {
-      if (m.id == id) {
+      if (m.id === id) {
         return res.data
       }
       return m
@@ -36,7 +38,7 @@ const updateWorker = (id, worker) => {
 }
 
 const deleteWorker = (id) => {
-axios.deleteWorker(`/api/workers/${id}`)
+axios.delete(`/api/workers/{id}`)
 setWorkers(workers.filter( m => m.id !== id))
 .catch(err => console.log(err))
 }
@@ -52,5 +54,6 @@ return(
   </>
   )
 }
+
 
 export default Workers;

@@ -1,15 +1,20 @@
 import Worker from './Worker';
 
-const WorkerList = ({workers, deleteWorker}) => {
-  return( 
+const WorkerList = ({ workers, deleteWorker, updateWorker }) => {
+  return (
     <>
-    <ul>
-      {
-        workers.map( m =>
-          <Worker {...m} deleteWorker={deleteWorker}/>
-        )
-      }
-    </ul>
+      <ul>
+        {
+          workers.map((M) => 
+            
+            (<Worker 
+              {...M} 
+              deleteWorker={deleteWorker} 
+              updateWorker={updateWorker}
+            />)
+          )
+        }
+      </ul>
     </>
   )
 }

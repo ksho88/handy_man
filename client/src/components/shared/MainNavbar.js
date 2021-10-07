@@ -6,7 +6,7 @@ const MainNavbar = () => {
     <>
       <Navbar 
         alignLinks="right"
-        brand={<a className="brand-logo" href="/">HandyMand</a>}
+        brand={<a className="brand-logo" href="/">HandyMan</a>}
         id="mobile-nav"
         menuIcon={<Icon>Menu</Icon>}
         options={{
@@ -21,17 +21,21 @@ const MainNavbar = () => {
 
         }}
       >
-        <NavItem href="./Home">
+        <NavItem href="/">
          Home
         </NavItem>
-        <NavItem href="./workers">
+        <NavItem href="/Workers">
           workers
+        </NavItem> 
+        <NavItem href="/Services">
+          Services
         </NavItem>
-        <NavItem href="./About">
+        <NavItem href="/About">
           About
         </NavItem>
-        <NavItem href="./Nomatch">
+        <NavItem href="/Nomatch">
         </NavItem>
+        
   
               
         

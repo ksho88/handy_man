@@ -8,11 +8,11 @@
   )
   
     2.times do
-     Service.create(
+     @worker.services.create(
        job_title: Faker::Job.title,
         desc: Faker::Job.field,
         category: Faker::IndustrySegments.industry,
-       worker_id: @worker.id
+       
       )
   end
 end

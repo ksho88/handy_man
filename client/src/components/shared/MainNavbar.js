@@ -21,18 +21,21 @@ const MainNavbar = () => {
 
         }}
       >
-        <NavItem href="./Home">
+        <NavItem href="/">
          Home
         </NavItem>
-        <NavItem href="./workers">
+        <NavItem href="/Workers">
           workers
+        </NavItem> 
+        <NavItem href="/Services">
+          Services
         </NavItem>
-        <NavItem href="./About">
+        <NavItem href="/About">
           About
         </NavItem>
-        <NavItem href="./Nomatch">
-        </NavItem>
-  
+        
+        
+        
               
         
       </Navbar>

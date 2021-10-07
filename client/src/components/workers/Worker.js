@@ -1,24 +1,33 @@
-import { useState, } from "react";
-import React from "react";
+import { useState } from "react";
 import WorkerForm from './WorkerForm';
+// import Services from'../services/Service';
 // import comments from
 
-const Worker = ({id, title, complete, deleteWorker, updateWorker }) => {
-  const [editing, setEdit] = useState(false)
+const Worker = ({ id, first_name, last_name, phone, email, specialty, deleteWorker, updateWorker }) => {
+  const [edit, setEdit] = useState(false)
 
   return ( 
     <>
+    <a href={`/workers/${id}/services`}>Services</a>
     <li>
-      {title}
+      {first_name}
       <br/>
-      complete: { complete ? "Yes" : "No"  }
-      {
-        editing ? 
+      {last_name}
+      <br/>
+      {specialty}
+      <br/>
+      {email}
+      <br/>
+      {phone}
+      <br/>
         <>
         <WorkerForm
         id={id}
-        title={title}
-        complete={complete}
+        first_name={first_name}
+        last_name={last_name}
+        phone={phone}
+        email={email}
+        specialty={specialty}
         updateWorker={updateWorker}
         setEdit={setEdit}
         />
@@ -26,8 +35,8 @@ const Worker = ({id, title, complete, deleteWorker, updateWorker }) => {
     :
        <button onClick={() => setEdit(true)}Edit>Edit</button>
 
-      }
-      <button onClick={() => deleteWorker(id)}>Delete</button>
+    
+      <button onClick={() => deleteWorker(true)}>Delete</button>
     </li>
     {/* <Comments workerId={id} /> */}
     </>

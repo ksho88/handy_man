@@ -56,6 +56,8 @@ const WorkerForm = ({ id,addWorker, first_name, last_name, email, phone, special
           placeholder="email"
         />
         <button type="submit">Submit</button>
+        <button tyep="Edit">Edit</button>
+        <button type="Delete">Delete</button>
       </form>
       
     </>

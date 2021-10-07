@@ -33,10 +33,9 @@ const MainNavbar = () => {
         <NavItem href="/About">
           About
         </NavItem>
-        <NavItem href="/Nomatch">
-        </NavItem>
         
-  
+        
+        
               
         
       </Navbar>

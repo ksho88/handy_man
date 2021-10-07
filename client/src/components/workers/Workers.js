@@ -16,7 +16,7 @@ const Workers = () => {
   }, [])
 
   const addWorker = (worker) => {
-    axios.post('/api/workers', {worker})
+    axios.post('/api/workers', { worker })
   .then( res => {
     setWorkers([...Workers, res.data])
   })

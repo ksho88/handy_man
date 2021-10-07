@@ -1,4 +1,5 @@
 class Api::ServicesController < ApplicationController
+  
   before_action :set_worker
   def index
     render json: @worker.services

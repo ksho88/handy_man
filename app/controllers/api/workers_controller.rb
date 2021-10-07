@@ -1,4 +1,4 @@
-WORKERS CONTROLLER
+
 class Api::WorkersController < ApplicationController
   #  no new and edit because that is in the front end now
   # only the crud action
@@ -37,12 +37,14 @@ class Api::WorkersController < ApplicationController
   def destroy
 
     Worker.find(params[:id]).destroy
-    render json: { message: ‘Worker Deleted’}
+    render json: { message: ‘Worker Deleted’ }
   end
+  
 
   private
     # { worker: {title: “”, complete: false}} we need to keep this in mind because we need to pass that format when we are doing a create
     def worker_params
       params.require(:worker).permit(:first_name, :last_name, :specialty, :phone, :email)
     end
-    
+   end
+  end

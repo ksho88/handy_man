@@ -26,20 +26,20 @@ const Workers = () => {
 const updateWorker = (id, worker) => {
   axios.put(`/api/workers/${id}`, { worker })
   .then( res => {
-    const updatedWorkers = workers.map( m => {
+    const updateWorkers = workers.map( m => {
       if (m.id === id) {
         return res.data
       }
       return m
     })
-    setWorkers(updatedWorkers)
+    setWorkers(updateWorkers)
   })
   .catch( err => console.log(err))
 }
 
 const deleteWorker = (id) => {
 axios.delete(`/api/workers/{id}`)
-setWorkers(workers.filter( m => m.id !== id))
+setWorkers(workers.filter( w => w.id !== id))
 .catch(err => console.log(err))
 }
 

@@ -6,7 +6,7 @@ import NoMatch from './components/shared/NoMatch';
 import MainNavbar from './components/shared/MainNavbar';
 import 'materialize-css/dist/css/materialize.min.css';
 import Worker from './components/workers/Worker';
-// import Services from './components/services/Service';
+import Services from './components/services/Service';
 // import Comments from './components/comments/Comments';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
   <Route exact path="/about" component={About} />
   <Route exact path="/Workers" component={Workers}/>
   <Route exact path="/Worker"component={Worker}/>
-  {/* <Route exact path="/workers/:id/services" component={Services} /> */}
+ <Route exact path="/services" component={Services} />
 
 
   <Route exact path="/NoMatch"components={NoMatch} />

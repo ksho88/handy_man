@@ -1,7 +1,7 @@
 import { useState } from "react";
 import WorkerForm from './WorkerForm';
 // import Services from'../services/Service';
-// import comments from
+// import Comments from '../comments/Comments'
 
 const Worker = ({ id, first_name, last_name, phone, email, specialty, deleteWorker, updateWorker }) => {
   const [edit, setEdit] = useState(false)

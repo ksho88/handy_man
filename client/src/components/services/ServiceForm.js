@@ -42,6 +42,7 @@ const ServiceFrom = ({ addService, id, job_title, complete, desc, updateService,
           value ={service.desc}
 
           />
+          <button type="Submit">Submit</button>
 
       </form>
     </>

@@ -26,14 +26,14 @@ const CommentForm = ({ addComment, id, title, body, author, updateComment, setEd
         <input
         name = "comment"
         value={comment.title}
-        onChange={(e) => setService({...comment, title: e.target.value })}
+        onChange={(e) => setComment({...comment, title: e.target.value })}
 
         required 
         placeholder="type comment here"
         />
         <input
         name="category"
-        value={service.category}
+        value={comment.category}
         onChange={(e) => setComment ({...author, author: e.target.value })}
         />
         <input

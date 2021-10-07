@@ -3,30 +3,31 @@ import axios from 'axios'
 import ServiceList from './ServiceList';
 import ServiceForm from './ServiceForm';
 
-const Services = ({ workerId }) => {
+const Services = () => {
   const [services, setServices] = useState([])
 
   useEffect( () => {
-    axios.get(`/api/workers/${workerId}/services`)
+    axios.get('/api/services')
       .then( res => {
         setServices(res.data)
+        console.logn(res.data)
       })
       .catch( err => console.log(err))
   }, [])
 
   const addService = (service) => {
-    axios.post(`/api/workers/${workerId}/services`, {service })
-    .then(res => {
-      serServices([...services, res.data])
-    })
-    .catch( err => console.log(err))
-  }
+    axios.post('/api/workers', { service })
+  .then( res => {
+    setWorkers([...Services, res.data])
+  })
+  .catch(err => console.log(err))
+}
 
 
   const updateService = (id, service) => {
-    axios.post(`api/worker/${workerId}/service/${id}`, { service })
+    axios.post(`api/services/${id}`, { service })
       .then( res => {
-        let updatedServices = services.map( c => {
+        const updatedServices = services.map( s => {
           if (s.id === id) { 
           return res.data
         }
@@ -37,17 +38,22 @@ const Services = ({ workerId }) => {
     .catch( err => console.log(err))
   }
   const deleteService = (id) => {
-    axios.delete(`/api/workers/${workerId}/services/${id}`)
-    then( res => {
-      setServices( services.filter( s => s.id !== id ))
-    })
+    axios.delete(`/api/workers/{id}`)
+    setWorkers(workers.filter( w => w.id !== id))
     .catch(err => console.log(err))
-  }
-  return (
+    }
+
+  return(
     <>
-    
+    <ServiceForm addSerice={addSevice} />
+    <ServiceList
+    services={services}
+    deleteService={addService}
+    updateaService={updateService}
+    deleteService={deleteService}
+       /> 
     </>
-  )
-}
+    )
+  }
 
 export default Services;

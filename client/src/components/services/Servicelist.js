@@ -5,17 +5,19 @@ const ServiceList = ({ services, deleteService, updateService }) => {
     <>
       <ul>
         {
-          services.map( s =>
-            <Comment
-            {...c}
-            deleteService={deleteService}
-            updateService={deleteService}
+          services.map((s) => 
+            
+            (<Service 
+              {...s} 
+              deleteService={deleteService} 
+              updateService={updateService}
             />
-          )  
+            )
+          )
         }
       </ul>
     </>
   )
 }
 
-export default ServiceList; 
+export default ServiceList;

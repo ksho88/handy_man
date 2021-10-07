@@ -11,7 +11,8 @@ const WorkerList = ({ workers, deleteWorker, updateWorker }) => {
               {...w} 
               deleteWorker={deleteWorker} 
               updateWorker={updateWorker}
-            />)
+            />
+            )
           )
         }
       </ul>

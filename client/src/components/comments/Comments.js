@@ -3,51 +3,59 @@ import axios from 'axios'
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 
-const Comments = ({ serviceId }) => {
+const Comments = () => {
   const [comments, setComments] = useState([])
 
   useEffect( () => {
-    axios.get(`/api/services/${serviceId}/comments`)
+    axios.get('/api/comments/')
       .then( res => {
-        setServices(res.data)
+        setComments(res.data)
+        console.log(res.data)
       })
       .catch( err => console.log(err))
   }, [])
 
   const addComment = (comment) => {
-    axios.post(`/api/comments/${serviceId}/comments`, {comment })
-    .then(res => {
-      serServices([...services, res.data])
-    })
-    .catch( err => console.log(err))
-  }
+    axios.post('/api/comments', { comments })
+  .then( res => {
+    setComments([...Comments, res.data])
+  })
+  .catch(err => console.log(err))
+}
 
 
-  const updateComment = (id, service) => {
-    axios.post(`api/worker/${workerId}/service/${id}`, { comment })
+  const updateComment = (id, comment) => {
+    axios.post(`api/worker/$={id}`, { comment })
       .then( res => {
-        let updateComment = comments.map( c => {
+        const updateComments = comments.map( c => {
           if (c.id === id) { 
           return res.data
         }
         return c 
       })
-      setServices(updatedComments)
+      setComments(updateComments)
     })
     .catch( err => console.log(err))
   }
-  const deleteService = (id) => {
-    axios.delete(`/api/workers/${workerId}/services/${id}`)
-    then( res => {
+
+  const deleteComment = (id) => {
+    axios.delete(`/api/commetents/${id}`)
       setComments( comments.filter( c => c.id !== id ))
-    })
+
     .catch(err => console.log(err))
   }
-  return (
-    <>
-    
-    </>
-  )
-}
 
-export default Comments;
+  return(
+    <>
+    <CommentForm addComment={addComment} />
+    <CommentList
+    comments={comments}
+    deleteWorker={deleteComment}
+    updateComment={updateComment}
+       /> 
+    </>
+    )
+  }
+  
+  
+  export default Comments;

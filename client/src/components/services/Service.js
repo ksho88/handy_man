@@ -3,15 +3,14 @@ import ServiceFrom from './ServiceForm';
 import Comments from '../comments/Comments';
 
 const Service = ({ id, job_title, desc, category, deleteService, updateService }) => {
-  const [editing, setEdit] = useState(false)
+  const [edit, setEdit] = useState(false)
 
   return (
     <>
       <li>
         {job_title}
         <br />
-        {
-          editing ?
+        
           <>
             <ServiceFrom
              id={id}
@@ -22,10 +21,9 @@ const Service = ({ id, job_title, desc, category, deleteService, updateService }
               setEdit={setEdit}
             />
           </>
-          :
           <button onClick={() => setEdit(true)}>Edit</button>
-        }
-        <button onClick={() => deleteService(id)}>Delete</button>
+        
+        <button onClick={() => deleteService(true)}>Delete</button>
       </li>
       <Comments serviceId={id} />
     </>
